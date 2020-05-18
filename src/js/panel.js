@@ -83,7 +83,7 @@ const renderPanel = (data, index) => {
   return html;
 };
 
-export const renderPanelContainer = () => {
+export default () => {
   panelData.forEach((val, index) => {
     var panel = renderPanel(val, index);
     tabPanel.insertAdjacentHTML("beforeend", panel);
