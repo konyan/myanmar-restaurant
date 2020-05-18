@@ -1,33 +1,28 @@
-console.log("HELLO WORLD");
-
-var tabButtons = document.querySelectorAll(
-  ".tabContainer .buttonContainer button"
+const tabMenu = document.querySelector(".container .header__menu");
+const tabMenus = document.querySelectorAll(".container .header__menu button");
+const tabPanels = document.querySelectorAll(
+  ".container .header__panel section"
 );
-var tabPanels = document.querySelectorAll(".tabContainer .tabPanel");
-var tabContainer = document.querySelector(".tabContainer .buttonContainer");
 
-function showPanel(panelIndex, colorCode) {
-  tabButtons.forEach(function (node) {
-    console.log(node);
-    node.style.backgroundColor = "";
-    node.style.color = "";
+function showPanel(panelIndex) {
+  tabMenus.forEach(function (node) {
+    node.className = "";
+    node.className = "menu";
   });
 
-  tabButtons[panelIndex].style.backgroundColor = colorCode;
-  tabButtons[panelIndex].style.color = "white";
+  tabMenus[panelIndex].className = "menu menu-active";
 
   tabPanels.forEach(function (node) {
+    console.log(node);
     node.style.display = "none";
   });
 
   tabPanels[panelIndex].style.display = "block";
-  tabPanels[panelIndex].style.backgroundColor = colorCode;
 }
 
-showPanel(0, "#f44336");
-
-tabContainer.addEventListener("click", function (event) {
-  let btnClass = event.target.className;
-  let id = btnClass.toString().substring(4, 5);
-  showPanel(id, "#f44336");
+tabMenu.addEventListener("click", (e) => {
+  showPanel(e.target.value);
 });
+
+//INITIALIZE
+showPanel(0);
