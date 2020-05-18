@@ -15,7 +15,7 @@
 ## About The Project
 
 <a href="https://github.com/konyan/ruby-job-scrapper">
-    <img src="./dist/img/project-img.png" alt="Logo" width="800" height="auto">
+    <img src="./dist/img/project-img.png" alt="Logo" width="100%" height="auto">
   </a>
 
 Let’s use what we’ve learned and take a chance to continue practicing DOM manipulation by dynamically rendering a simple restaurant homepage! By the end, we are going to be using JavaScript alone to generate the entire contents of the website!
