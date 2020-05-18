@@ -1,8 +1,7 @@
+import { renderPanelContainer } from "./panel";
+
 const tabMenu = document.querySelector(".container .header__menu");
 const tabMenus = document.querySelectorAll(".container .header__menu button");
-const tabPanels = document.querySelectorAll(
-  ".container .header__panel section"
-);
 
 function showPanel(panelIndex) {
   tabMenus.forEach(function (node) {
@@ -12,17 +11,20 @@ function showPanel(panelIndex) {
 
   tabMenus[panelIndex].className = "menu menu-active";
 
+  const tabPanels = document.querySelectorAll(
+    ".container .header__panel section"
+  );
+
   tabPanels.forEach(function (node) {
-    console.log(node);
     node.className = "";
     node.className = "panel";
   });
 
   tabPanels[panelIndex].className = "panel panel-active";
-  panelPattern(panelIndex);
+  panelPattern(tabPanels, panelIndex);
 }
 
-function panelPattern(panelIndex) {
+function panelPattern(tabPanels, panelIndex) {
   if (panelIndex == 0) {
     tabPanels[0].style.transform = "translateX(0%)";
     tabPanels[1].style.transform = "translateX(0%)";
@@ -46,9 +48,15 @@ function panelPattern(panelIndex) {
   }
 }
 
-tabMenu.addEventListener("click", (e) => {
-  showPanel(e.target.value);
-});
+const globalInit = () => {
+  renderPanelContainer();
+
+  tabMenu.addEventListener("click", (e) => {
+    console.log("TARGET", e.target.value);
+    showPanel(e.target.value);
+  });
+  showPanel(0);
+};
 
 //INITIALIZE
-showPanel(0);
+globalInit();
