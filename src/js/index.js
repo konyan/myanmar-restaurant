@@ -14,10 +14,36 @@ function showPanel(panelIndex) {
 
   tabPanels.forEach(function (node) {
     console.log(node);
-    node.style.display = "none";
+    node.className = "";
+    node.className = "panel";
   });
 
-  tabPanels[panelIndex].style.display = "flex";
+  tabPanels[panelIndex].className = "panel panel-active";
+  panelPattern(panelIndex);
+}
+
+function panelPattern(panelIndex) {
+  if (panelIndex == 0) {
+    tabPanels[0].style.transform = "translateX(0%)";
+    tabPanels[1].style.transform = "translateX(0%)";
+    tabPanels[2].style.transform = "translateX(0%)";
+    tabPanels[3].style.transform = "translateX(0%)";
+  } else if (panelIndex == 1) {
+    tabPanels[0].style.transform = "translateX(-100%)";
+    tabPanels[1].style.transform = "translateX(-100%)";
+    tabPanels[2].style.transform = "translateX(-100%)";
+    tabPanels[3].style.transform = "translateX(-100%)";
+  } else if (panelIndex == 2) {
+    tabPanels[0].style.transform = "translateX(-200%)";
+    tabPanels[1].style.transform = "translateX(-200%)";
+    tabPanels[2].style.transform = "translateX(-200%)";
+    tabPanels[3].style.transform = "translateX(-200%)";
+  } else if (panelIndex == 3) {
+    tabPanels[0].style.transform = "translateX(-300%)";
+    tabPanels[1].style.transform = "translateX(-300%)";
+    tabPanels[2].style.transform = "translateX(-300%)";
+    tabPanels[3].style.transform = "translateX(-300%)";
+  }
 }
 
 tabMenu.addEventListener("click", (e) => {
