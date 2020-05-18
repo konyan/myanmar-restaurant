@@ -4,6 +4,7 @@ var tabButtons = document.querySelectorAll(
   ".tabContainer .buttonContainer button"
 );
 var tabPanels = document.querySelectorAll(".tabContainer .tabPanel");
+var tabContainer = document.querySelector(".tabContainer .buttonContainer");
 
 function showPanel(panelIndex, colorCode) {
   tabButtons.forEach(function (node) {
@@ -24,3 +25,9 @@ function showPanel(panelIndex, colorCode) {
 }
 
 showPanel(0, "#f44336");
+
+tabContainer.addEventListener("click", function (event) {
+  let btnClass = event.target.className;
+  let id = btnClass.toString().substring(4, 5);
+  showPanel(id, "#f44336");
+});
