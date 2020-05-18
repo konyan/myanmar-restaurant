@@ -52,7 +52,6 @@ const globalInit = () => {
   renderPanelContainer();
 
   tabMenu.addEventListener("click", (e) => {
-    console.log("TARGET", e.target.value);
     showPanel(e.target.value);
   });
   showPanel(0);
