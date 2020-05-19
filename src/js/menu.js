@@ -1,6 +1,6 @@
 const panelData = [
   {
-    title: "လက်ဖက်သုတ်",
+    title: "လက်ဖက်သုတ် good",
     title_en: "La-Phat Salad",
     description:
       "the fermented tea leaves were at the center, surrounded bycrackling-crisp fried garlic chips, crunchy dried lentils andtoasted peanuts, savory dried shrimp, nutty sesame seeds,chopped green chilies, fresh tomatoes, and ginger. With itsperfect balance of bright, tart lime juice and deep, earthy,salty fish sauce, it was, without question, the favorite saladin my life.",
@@ -37,8 +37,6 @@ const panelData = [
     img3: "./img/snack-1.jpg",
   },
 ];
-
-const tabPanel = document.querySelector(".container .header__panel");
 
 const renderPanel = (data, index) => {
   const html = `
@@ -83,9 +81,24 @@ const renderPanel = (data, index) => {
   return html;
 };
 
-export default () => {
+export default (node) => {
+  const menu = `
+ <div class="header__menu">
+            <button class="menu menu-active" value="0">01</button>
+            <button class="menu" value="1">02</button>
+            <button class="menu" value="2">03</button>
+            <button class="menu" value="3">04</button>
+          </div>
+  `;
+
+  node.insertAdjacentHTML("beforeend", menu);
+  const panels = document.createElement("div");
+  panels.className = "header__panel";
+
   panelData.forEach((val, index) => {
     const panel = renderPanel(val, index);
-    tabPanel.insertAdjacentHTML("beforeend", panel);
+    panels.insertAdjacentHTML("beforeend", panel);
   });
+
+  node.appendChild(panels);
 };

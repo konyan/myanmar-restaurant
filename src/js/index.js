@@ -1,9 +1,11 @@
-import renderPanelContainer from "./panel";
-
-const tabMenu = document.querySelector(".container .header__menu");
-const tabMenus = document.querySelectorAll(".container .header__menu button");
+import menu from "./menu";
+import header from "./header";
+import nav from "./nav";
+import button from "./button";
 
 const showPanel = (panelIndex) => {
+  const tabMenus = document.querySelectorAll(".container .header__menu button");
+
   tabMenus.forEach(function (node) {
     node.className = "";
     node.className = "menu";
@@ -49,7 +51,21 @@ const panelPattern = (tabPanels, panelIndex) => {
 };
 
 const globalInit = () => {
-  renderPanelContainer();
+  const content = document.querySelector(".wrapper");
+  const contentOverlay = document.createElement("div");
+  contentOverlay.className = "wrapper-overlay";
+
+  const container = document.createElement("div");
+  container.className = "container";
+
+  content.appendChild(contentOverlay);
+  contentOverlay.appendChild(container);
+  header(container);
+  nav(container);
+  menu(container);
+  button(container);
+
+  const tabMenu = document.querySelector(".container .header__menu");
 
   tabMenu.addEventListener("click", (e) => {
     showPanel(e.target.value);
